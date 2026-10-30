@@ -1,0 +1,498 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --dark: #0f172a;
+  --background: #f1f5f9;
+  --border: #dbe3ef;
+  --text: #334155;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.header {
+  background: linear-gradient(120deg, #0f172a, #1d4ed8);
+  color: white;
+  text-align: center;
+  padding: 32px 15px;
+}
+
+.header h1 {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.header p {
+  margin: 8px 0 14px;
+  color: #dbeafe;
+}
+
+.status-badge {
+  display: inline-block;
+  background: #14532d;
+  color: #bbf7d0;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px 18px;
+}
+
+.intro {
+  margin-bottom: 22px;
+}
+
+.intro h2 {
+  color: var(--dark);
+  font-size: 24px;
+}
+
+.intro p,
+.subtitle {
+  color: #64748b;
+  margin: 6px 0 20px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 12px #00000008;
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.stat-card p {
+  color: #64748b;
+}
+
+.panel {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 12px #00000008;
+}
+
+.panel h2 {
+  font-size: 21px;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.topology {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 25px 0;
+}
+
+.lan-box {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  padding: 20px 12px;
+  border-radius: 14px;
+}
+
+.lan-one {
+  background: #eff6ff;
+  border: 2px solid #93c5fd;
+}
+
+.lan-two {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+}
+
+.lan-box h3 {
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.lan-box > p {
+  font-size: 13px;
+}
+
+.device-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.device {
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 12px 8px;
+  min-width: 100px;
+  text-align: center;
+  box-shadow: 0 2px 5px #0000000a;
+}
+
+.device-icon {
+  font-size: 30px;
+}
+
+.device strong,
+.device small {
+  display: block;
+}
+
+.device strong {
+  color: #0f172a;
+}
+
+.device small {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.connection-line {
+  width: 3px;
+  height: 35px;
+  background: #64748b;
+  margin: 0 auto;
+}
+
+.switch {
+  max-width: 140px;
+  margin: auto;
+}
+
+.gateway {
+  margin-top: 16px;
+  font-weight: bold;
+  color: #475569;
+}
+
+.router-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 245px;
+}
+
+.router-link {
+  width: 35px;
+  height: 4px;
+  background: #22c55e;
+}
+
+.router-device {
+  background: #1e293b;
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px 12px;
+  min-width: 170px;
+  box-shadow: 0 6px 20px #00000025;
+}
+
+.router-icon {
+  font-size: 40px;
+}
+
+.router-device h3 {
+  color: white;
+}
+
+.router-device p {
+  font-size: 12px;
+  color: #93c5fd;
+}
+
+.router-device small {
+  display: block;
+  font-size: 10px;
+  color: #cbd5e1;
+  margin-top: 6px;
+}
+
+.packet-status {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 13px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #334155;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+select:focus,
+input:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+.btn {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.secondary {
+  background: #e0e7ff;
+  color: #1e40af;
+}
+
+.warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.section-heading {
+  margin-top: 25px;
+  color: #0f172a;
+}
+
+.cli-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.cli-prompt {
+  font-family: monospace;
+  color: #1d4ed8;
+  font-weight: bold;
+}
+
+.cli-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.command-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.command-examples span {
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.terminal-header span {
+  color: #16a34a;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.terminal {
+  background: #020617;
+  color: #86efac;
+  border-radius: 10px;
+  padding: 22px;
+  min-height: 250px;
+  max-height: 450px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+th,
+td {
+  padding: 13px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  font-size: 13px;
+}
+
+th {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+tr:hover td {
+  background: #f8fafc;
+}
+
+footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 25px;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 950px) {
+  .topology {
+    flex-direction: column;
+  }
+
+  .lan-box {
+    width: 100%;
+  }
+
+  .router-section {
+    flex-direction: column;
+    flex-basis: auto;
+  }
+
+  .router-link {
+    width: 4px;
+    height: 25px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 21px;
+  }
+
+  .container {
+    padding: 15px 10px;
+  }
+
+  .panel {
+    padding: 17px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .device {
+    min-width: 90px;
+  }
+
+  .cli-row {
+    flex-wrap: wrap;
+  }
+
+  .cli-prompt {
+    width: 100%;
+  }
+
+  .cli-row input {
+    flex-basis: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .terminal {
+    font-size: 11px;
+  }
+}

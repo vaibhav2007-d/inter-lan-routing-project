@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>Inter-LAN Routing Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>INTER-LAN ROUTING SIMULATOR</h1>
+  <p>Connecting Two LANs Using a Cisco Router</p>
+  <span class="status-badge">● NETWORK ONLINE</span>
+</header>
+
+<main class="container">
+
+  <section class="intro">
+    <h2>Network Simulation Dashboard</h2>
+    <p>
+      Cisco 1941 Router | Two Cisco 2960 Switches |
+      Four PCs | Two Local Area Networks
+    </p>
+  </section>
+
+  <section class="stats">
+    <div class="stat-card">
+      <h3>1</h3>
+      <p>Router</p>
+    </div>
+    <div class="stat-card">
+      <h3>2</h3>
+      <p>Switches</p>
+    </div>
+    <div class="stat-card">
+      <h3>4</h3>
+      <p>Computers</p>
+    </div>
+    <div class="stat-card">
+      <h3>2</h3>
+      <p>Networks</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Network Topology</h2>
+    <p class="subtitle">
+      Logical representation of two LANs connected
+      through Router6
+    </p>
+
+    <div class="topology">
+
+      <div class="lan-box lan-one">
+        <h3>LAN 1</h3>
+        <p>192.168.1.0/24</p>
+
+        <div class="device-row">
+          <div class="device">
+            <div class="device-icon">💻</div>
+            <strong>PC39</strong>
+            <small>192.168.1.2</small>
+          </div>
+
+          <div class="device">
+            <div class="device-icon">💻</div>
+            <strong>PC40</strong>
+            <small>192.168.1.3</small>
+          </div>
+        </div>
+
+        <div class="connection-line"></div>
+
+        <div class="device switch">
+          <div class="device-icon">🔀</div>
+          <strong>Switch13</strong>
+          <small>Cisco 2960</small>
+        </div>
+
+        <p class="gateway">Gateway: 192.168.1.1</p>
+      </div>
+
+      <div class="router-section">
+        <div class="router-link"></div>
+
+        <div class="router-device">
+          <div class="router-icon">📡</div>
+          <h3>Router6</h3>
+          <p>Cisco 1941</p>
+          <small>Gi0/0: 192.168.1.1</small>
+          <small>Gi0/1: 192.168.2.1</small>
+        </div>
+
+        <div class="router-link"></div>
+      </div>
+
+      <div class="lan-box lan-two">
+        <h3>LAN 2</h3>
+        <p>192.168.2.0/24</p>
+
+        <div class="device-row">
+          <div class="device">
+            <div class="device-icon">💻</div>
+            <strong>PC41</strong>
+            <small>192.168.2.2</small>
+          </div>
+
+          <div class="device">
+            <div class="device-icon">💻</div>
+            <strong>PC42</strong>
+            <small>192.168.2.3</small>
+          </div>
+        </div>
+
+        <div class="connection-line"></div>
+
+        <div class="device switch">
+          <div class="device-icon">🔀</div>
+          <strong>Switch14</strong>
+          <small>Cisco 2960</small>
+        </div>
+
+        <p class="gateway">Gateway: 192.168.2.1</p>
+      </div>
+
+    </div>
+
+    <div class="packet-status" id="packetStatus">
+      Network ready for packet transmission.
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ping Test Simulator</h2>
+    <p class="subtitle">
+      Select source and destination computers
+      to test network connectivity.
+    </p>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="sourcePC">Source Computer</label>
+        <select id="sourcePC">
+          <option value="PC39">PC39 - 192.168.1.2</option>
+          <option value="PC40">PC40 - 192.168.1.3</option>
+          <option value="PC41">PC41 - 192.168.2.2</option>
+          <option value="PC42">PC42 - 192.168.2.3</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="destinationPC">
+          Destination Computer
+        </label>
+        <select id="destinationPC">
+          <option value="PC41">PC41 - 192.168.2.2</option>
+          <option value="PC42">PC42 - 192.168.2.3</option>
+          <option value="PC39">PC39 - 192.168.1.2</option>
+          <option value="PC40">PC40 - 192.168.1.3</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn primary" id="pingBtn">
+      ▶ Run Ping Test
+    </button>
+  </section>
+
+  <section class="panel">
+    <h2>Router Management</h2>
+
+    <div class="button-group">
+      <button class="btn secondary" id="routeBtn">
+        Show Routing Table
+      </button>
+
+      <button class="btn secondary"
+              onclick="showInterfaces()">
+        Show Interfaces
+      </button>
+
+      <button class="btn secondary"
+              onclick="showConfiguration()">
+        Running Configuration
+      </button>
+
+      <button class="btn secondary"
+              onclick="showIPTable()">
+        IP Address Table
+      </button>
+    </div>
+
+    <h3 class="section-heading">Interface Controls</h3>
+
+    <div class="button-group">
+      <button class="btn warning"
+              onclick="toggleRouterInterface(1)">
+        Toggle Gi0/0
+      </button>
+
+      <button class="btn warning"
+              onclick="toggleRouterInterface(2)">
+        Toggle Gi0/1
+      </button>
+
+      <button class="btn danger"
+              onclick="resetNetwork()">
+        Reset Network
+      </button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Cisco Router CLI</h2>
+    <p class="subtitle">
+      Enter a supported Cisco-style command.
+    </p>
+
+    <div class="cli-row">
+      <span class="cli-prompt">Router6#</span>
+      <input type="text"
+             id="commandInput"
+             placeholder="show ip route">
+      <button class="btn primary" id="commandBtn">
+        Execute
+      </button>
+    </div>
+
+    <div class="command-examples">
+      <span>show ip route</span>
+      <span>show ip interface brief</span>
+      <span>show running-config</span>
+      <span>ping 192.168.2.2</span>
+      <span>help</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="terminal-header">
+      <h2>Simulation Output</h2>
+      <span>● TERMINAL</span>
+    </div>
+
+    <pre id="output" class="terminal">
+Initializing network simulator...
+    </pre>
+  </section>
+
+  <section class="panel">
+    <h2>IP Address Configuration</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>IP Address</th>
+            <th>Subnet Mask</th>
+            <th>Gateway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Router Gi0/0</td>
+            <td>192.168.1.1</td>
+            <td>255.255.255.0</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Router Gi0/1</td>
+            <td>192.168.2.1</td>
+            <td>255.255.255.0</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>PC39</td>
+            <td>192.168.1.2</td>
+            <td>255.255.255.0</td>
+            <td>192.168.1.1</td>
+          </tr>
+          <tr>
+            <td>PC40</td>
+            <td>192.168.1.3</td>
+            <td>255.255.255.0</td>
+            <td>192.168.1.1</td>
+          </tr>
+          <tr>
+            <td>PC41</td>
+            <td>192.168.2.2</td>
+            <td>255.255.255.0</td>
+            <td>192.168.2.1</td>
+          </tr>
+          <tr>
+            <td>PC42</td>
+            <td>192.168.2.3</td>
+            <td>255.255.255.0</td>
+            <td>192.168.2.1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Inter-LAN Routing Simulation Project</p>
+  <p>Cisco Networking | Computer Networks</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
